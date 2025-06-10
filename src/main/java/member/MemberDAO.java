@@ -22,6 +22,7 @@ public class MemberDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public void close() {
@@ -37,21 +38,24 @@ public class MemberDAO {
 		List<Member> memberlist = new ArrayList<>();
 		// 모든 회원들의 정보를 리턴하는 부분
 		open();
+		
 		try {
-			pstmt = conn.prepareStatement("SELECT * FROM members");
+			pstmt = conn.prepareStatement("SELECT * FROM MEMBERS");
 			ResultSet rs = pstmt.executeQuery();
-			
-			Member m = new Member();
-			m.setId(rs.getInt("id"));
-			m.setUsername(rs.getString("username"));
-			m.setCompany(rs.getString("company"));
-			m.setBirthday(rs.getDate("birthday"));
-			m.setEmail(rs.getString("email"));
-			
-			memberlist.add(m);
+
+			while(rs.next()) {
+				Member m = new Member();
+				m.setId(rs.getInt("id"));
+				m.setUsername(rs.getString("username"));
+				m.setCompany(rs.getString("company"));
+				m.setBirthday(rs.getDate("birthday"));
+				m.setEmail(rs.getString("email"));
+				
+				memberlist.add(m);
+			}
 			
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 		}finally {
 			close();
 		}
