@@ -28,7 +28,7 @@
 	<hr>
 	<h2>회원 추가</h2>
 	<hr>
-	<form method="post" action="/jsp2023-1/mcontrol?action=insert">
+	<form method="post" action="/JSP2025/mcontrol?action=insert">
 		<label>username</label> <input type="text" name="username"><br>
 		<label>조직</label> <input type="text" name="company"><br>
 		<label>생일</label> <input type="text" name="birthday"><br>
